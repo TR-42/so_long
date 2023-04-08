@@ -3,6 +3,7 @@
         {
             "name": "42",
             "includePath": [
+                "includes",
                 "${default}"
             ],
             "defines": [],
