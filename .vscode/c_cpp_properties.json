@@ -4,6 +4,7 @@
             "name": "42",
             "includePath": [
                 "includes",
+                "libft",
                 "${default}"
             ],
             "defines": [],
