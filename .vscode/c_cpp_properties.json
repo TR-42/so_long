@@ -5,6 +5,7 @@
             "includePath": [
                 "includes",
                 "libft",
+                "minilibx-linux",
                 "${default}"
             ],
             "defines": [],
