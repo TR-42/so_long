@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/08 20:46:16 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/08 20:47:17 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MLX	=	$(MLX_DIR)/$(MLX_FNAME)
 MLX_MAKE	=	make -C $(MLX_DIR)
 
 override CFLAGS	+=	-Wall -Wextra -Werror -MMD -MP
-INCLUDES	=	-I $(LIBFT_DIR) -I $(MLX_DIR) -I ./headers
+INCLUDES	=	 -I ./headers -I $(LIBFT_DIR) -I $(MLX_DIR)
 
 CC		=	cc
 
