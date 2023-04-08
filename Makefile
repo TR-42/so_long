@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/08 20:23:16 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/08 20:42:26 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,11 @@ LIBFT_DIR	=	./libft
 LIBFT	=	$(LIBFT_DIR)/libft.a
 LIBFT_MAKE	=	make -C $(LIBFT_DIR)
 
+MLX_DIR	=	minilibx-linux
+MLX_FNAME	=	libmlx.a
+MLX	=	$(MLX_DIR)/$(MLX_FNAME)
+MLX_MAKE	=	make -C $(MLX_DIR)
+
 override CFLAGS	+=	-Wall -Wextra -Werror -MMD -MP
 INCLUDES	=	-I $(LIBFT_DIR) -I ./headers
 
@@ -32,8 +37,8 @@ CC		=	cc
 
 all:	$(NAME)
 
-$(NAME):	$(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^
+$(NAME):	$(LIBFT) $(MLX) $(OBJS)
+	$(CC) $(CFLAGS) -lm $(INCLUDES) -o $@ $^
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -41,6 +46,9 @@ $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 
 $(LIBFT):
 	$(LIBFT_MAKE)
+
+$(MLX):
+	$(MLX_MAKE)
 
 bonus:
 	@make
@@ -57,9 +65,11 @@ fclean_local: clean_local
 
 clean: clean_local
 	$(LIBFT_MAKE) clean
+	$(MLX_MAKE) clean
 
 fclean:	fclean_local
 	$(LIBFT_MAKE) fclean
+	$(MLX_MAKE) clean
 
 re:	fclean all
 
