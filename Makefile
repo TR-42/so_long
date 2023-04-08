@@ -1,0 +1,68 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
+#    Updated: 2023/04/08 20:23:16 by kfujita          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME	=	so_long
+
+SRC_DIR	=	./srcs
+
+SRCS	=\
+
+OBJ_DIR	=	./obj
+OBJS	=	$(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+
+DEPS	=	$(addprefix $(OBJ_DIR)/, $(SRCS:.c=.d))
+
+LIBFT_DIR	=	./libft
+LIBFT	=	$(LIBFT_DIR)/libft.a
+LIBFT_MAKE	=	make -C $(LIBFT_DIR)
+
+override CFLAGS	+=	-Wall -Wextra -Werror -MMD -MP
+INCLUDES	=	-I $(LIBFT_DIR) -I ./headers
+
+CC		=	cc
+
+all:	$(NAME)
+
+$(NAME):	$(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ $^
+
+$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+$(LIBFT):
+	$(LIBFT_MAKE)
+
+bonus:
+	@make
+
+debug: fclean_local
+	make CFLAGS=-DDEBUG
+
+clean_local:
+	rm -f $(OBJS) $(OBJS_BONUS) $(DEPS) $(DEPS_BONUS)
+	rm -d $(OBJ_DIR) || exit 0
+
+fclean_local: clean_local
+	rm -f $(NAME)
+
+clean: clean_local
+	$(LIBFT_MAKE) clean
+
+fclean:	fclean_local
+	$(LIBFT_MAKE) fclean
+
+re:	fclean all
+
+-include $(DEPS) $(DEPS_BONUS)
+
+.PHONY:	clean_local MAKE_BEFORE bonus debug
