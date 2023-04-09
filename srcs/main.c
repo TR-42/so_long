@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 06:54:42 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 06:56:01 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	main(int argc, char const *argv[])
 	ft_putstr_fd("~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~\n", STDOUT_FILENO);
 	while (i < d.row_count)
 		ft_putendl_fd((char *)(d.map[i++]), STDOUT_FILENO);
+	dispose_so_long(&d);
 	return (0);
 }
