@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 11:09:32 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/09 11:11:39 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char const *argv[])
 	size_t	i;
 
 	if (argc != 2)
-		return (print_error_msg(g_err_inval));
+		return (print_error_msg(g_err_inval_argc));
 	map_lines = read_from_fname(argv[1]);
 	if (map_lines.p == NULL)
 		return (1);

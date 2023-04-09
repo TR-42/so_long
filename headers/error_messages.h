@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 11:09:16 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/09 11:11:53 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static const char	g_err[]
 	= "Error\n";
 
-static const char	g_err_inval[]
+static const char	g_err_inval_argc[]
 	= "Invalid argc (usage: `so_long MAP_FILE_NAME`)\n";
 
 int	print_error_msg(const char *str);
