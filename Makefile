@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/10 06:46:16 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/10 08:39:30 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,22 @@ LIBFT_DIR	=	./libft
 LIBFT	=	$(LIBFT_DIR)/libft.a
 LIBFT_MAKE	=	make -C $(LIBFT_DIR)
 
+X11_DIR	=	/usr/X11
+
 MLX_DIR	=	minilibx-linux
 MLX_FNAME	=	libmlx.a
 MLX	=	$(MLX_DIR)/$(MLX_FNAME)
 MLX_MAKE	=	make -C $(MLX_DIR)
 
 override CFLAGS	+=	-Wall -Wextra -Werror -MMD -MP
-INCLUDES	=	 -I ./headers -I $(LIBFT_DIR) -I $(MLX_DIR)
+INCLUDES	=	 -I ./headers -I $(LIBFT_DIR) -I $(MLX_DIR) -I $(X11_DIR)/include
 
 CC		=	cc
 
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) -lm $(INCLUDES) -o $@ $^
+	$(CC) $(CFLAGS) -lm $(INCLUDES) -L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx -L$(X11_DIR)/lib -lXext -lX11 -o $@ $(OBJS)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
