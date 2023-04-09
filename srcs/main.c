@@ -58,6 +58,8 @@ int	main(int argc, char const *argv[])
 		ft_putendl_fd("Invalid (Style)", STDOUT_FILENO);
 	else if (!is_valid_map_data(&d))
 		ft_putendl_fd("Invalid (Data)", STDOUT_FILENO);
+	else if (!is_map_solvable(&d))
+		ft_putendl_fd("Invalid (cannot solve)", STDOUT_FILENO);
 	else
 		ft_putendl_fd("Valid", STDOUT_FILENO);
 	ft_putstr_fd("~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~\n", STDOUT_FILENO);

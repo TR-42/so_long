@@ -20,6 +20,7 @@ SRCS	=\
 	main.c \
 	read_input.c \
 	t_so_long.c \
+	validate_input_solv.c \
 	validate_input.c \
 
 OBJ_DIR	=	./obj
