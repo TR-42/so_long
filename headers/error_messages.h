@@ -16,6 +16,9 @@
 static const char	g_err[]
 	= "Error\n";
 
+static const char	g_err_inval_extension[]
+	= "Invalid filename. It must end with `.ber`.";
+
 static const char	g_err_inval_argc[]
 	= "Invalid argc (usage: `so_long MAP_FILE_NAME`)";
 
