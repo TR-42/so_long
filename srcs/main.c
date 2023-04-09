@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 06:21:23 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 06:54:42 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	init_struct(const char *fname, t_so_long *d)
 {
 	t_vect	map_lines;
 
-	*d = (t_so_long){};
+	*d = (t_so_long){0};
 	if (!ft_endwith_str(fname, ".ber"))
 		return (print_error_msg(g_err_inval_extension));
 	map_lines = read_from_fname(fname);

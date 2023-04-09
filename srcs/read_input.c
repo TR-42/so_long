@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:22:00 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 11:39:28 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 06:54:15 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_vect	_perror_return(const char *str, errno_t err)
 	if (err == 0)
 		err = errno;
 	print_error_msg2(str, strerror(err));
-	return ((t_vect){});
+	return ((t_vect){0});
 }
 
 t_vect	read_from_fname(const char *fname)
