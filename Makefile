@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/09 11:09:47 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/09 11:26:31 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRC_DIR	=	./srcs
 
 SRCS	=\
 	error_messages.c \
+	ft_endwith.c \
 	main.c \
 	read_input.c \
 
