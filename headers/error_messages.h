@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 11:33:30 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 07:43:35 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ static const char	g_err_inval_extension[]
 
 static const char	g_err_inval_argc[]
 	= "Invalid argc (usage: `so_long MAP_FILE_NAME`)";
+
+static const char	g_err_map_style[]
+	= "Invalid map style (maybe: map is not rect, or invalid char in the map)";
+
+static const char	g_err_map_data[]
+	= "Invalid map data (maybe: start/end pos, collectives, or no closed wall)";
+
+static const char	g_err_map_not_solvable[]
+	= "Invalid map data (unsolvable map)";
 
 int	print_error_msg2(const char *str1, const char *str2);
 int	print_error_msg(const char *str);

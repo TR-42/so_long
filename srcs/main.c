@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 07:26:01 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 07:43:54 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static int	init_struct(const char *fname, t_so_long *d)
 		((char *)d->map[0])[d->col_count - 1] = '\0';
 		d->col_count--;
 	}
+	if (!is_valid_map_style(d))
+		return (print_error_msg(g_err_map_style));
+	else if (!is_valid_map_data(d))
+		return (print_error_msg(g_err_map_data));
+	else if (!is_map_solvable(d))
+		return (print_error_msg(g_err_map_not_solvable));
 	return (0);
 }
 
