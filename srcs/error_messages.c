@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error_messages.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 11:09:32 by kfujita          ###   ########.fr       */
+/*   Created: 2023/04/09 11:00:58 by kfujita           #+#    #+#             */
+/*   Updated: 2023/04/09 11:10:05 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// - NULL
+// - errno
+#include <errno.h>
+
+// - strerror
+#include <string.h>
+
 // - STDERR_FILENO
 // - write
 #include <unistd.h>
 
 #include "ft_put/ft_put.h"
-
-#include "read_input.h"
 #include "error_messages.h"
 
-int	main(int argc, char const *argv[])
+int	print_error_msg(const char *str)
 {
-	t_vect	map_lines;
-	size_t	i;
+	write(STDERR_FILENO, g_err, sizeof(g_err));
+	ft_putstr_fd((char *)str, STDERR_FILENO);
+	return (1);
+}
 
-	if (argc != 2)
-		return (print_error_msg(g_err_inval));
-	map_lines = read_from_fname(argv[1]);
-	if (map_lines.p == NULL)
-		return (1);
-	i = 0;
-	while (i < map_lines.len)
-		ft_putstr_fd(((char **)map_lines.p)[i++], STDOUT_FILENO);
-	return (0);
+int	print_error_errno(int num)
+{
+	return (print_error_msg(strerror(num)));
+}
+
+int	print_error(void)
+{
+	return (print_error_errno(errno));
 }
