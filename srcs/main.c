@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 06:05:24 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 06:21:23 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include "ft_endwith.h"
 #include "read_input.h"
 #include "error_messages.h"
+#include "validate_input.h"
 
 static int	init_struct(const char *fname, t_so_long *d)
 {
@@ -53,7 +54,12 @@ int	main(int argc, char const *argv[])
 	i = init_struct(argv[1], &d);
 	if (i != 0)
 		return (i);
+	if (is_valid_map_style(&d) && is_valid_map_data(&d))
+		ft_putendl_fd("Valid", STDOUT_FILENO);
+	else
+		ft_putendl_fd("Invalid", STDOUT_FILENO);
+	ft_putstr_fd("~~~~~~~~~~~~~~~~~~~\n~~~~~~~~~~~~~~~~~~~\n", STDOUT_FILENO);
 	while (i < d.row_count)
-		ft_putstr_fd((char *)(d.map[i++]), STDOUT_FILENO);
+		ft_putendl_fd((char *)(d.map[i++]), STDOUT_FILENO);
 	return (0);
 }
