@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 07:18:48 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 08:42:18 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,13 @@
 
 # define CHR_VISITED '\a'
 
+# define IMG_WIDTH 32
+# define IMG_HEIGHT (IMG_WIDTH)
+
 typedef struct s_so_long
 {
+	void		*mlx;
+	void		*mlx_win;
 	const char	**map;
 	size_t		row_count;
 	size_t		col_count;
@@ -32,6 +37,7 @@ typedef struct s_so_long
 	size_t		start_col;
 }	t_so_long;
 
+int		init_window(const char *argv0, t_so_long *d);
 void	dispose_so_long(t_so_long *d);
 
 #endif

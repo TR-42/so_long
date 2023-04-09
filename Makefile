@@ -17,6 +17,7 @@ SRC_DIR	=	./srcs
 SRCS	=\
 	error_messages.c \
 	ft_endwith.c \
+	init_window.c \
 	main.c \
 	read_input.c \
 	t_so_long.c \

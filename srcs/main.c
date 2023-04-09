@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 07:43:54 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 08:32:18 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 // - STDERR_FILENO
 // - write
 #include <unistd.h>
+
+#include "mlx.h"
 
 #include "ft_put/ft_put.h"
 #include "ft_string/ft_string.h"
@@ -52,14 +54,17 @@ static int	init_struct(const char *fname, t_so_long *d)
 
 int	main(int argc, char const *argv[])
 {
-	size_t		i;
+	int			ret;
 	t_so_long	d;
 
 	if (argc != 2)
 		return (print_error_msg(g_err_inval_argc));
-	i = init_struct(argv[1], &d);
-	if (i != 0)
-		return (i);
+	ret = init_struct(argv[1], &d);
+	if (ret != 0)
+		return (ret);
+	ret = init_window(argv[0], &d);
+	if (ret == 0)
+		mlx_loop(d.mlx);
 	dispose_so_long(&d);
-	return (0);
+	return (ret);
 }
