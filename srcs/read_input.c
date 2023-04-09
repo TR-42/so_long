@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:22:00 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 00:45:52 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/09 11:39:28 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,24 @@
 // - open
 #include <fcntl.h>
 
-// - perror
-#include <stdio.h>
-
 // - free
 #include <stdlib.h>
+
+// - strerror
+#include <string.h>
 
 // - read
 #include <unistd.h>
 
+#include "error_messages.h"
 #include "gnl/get_next_line.h"
 #include "read_input.h"
 
 static t_vect	_perror_return(const char *str, errno_t err)
 {
-	if (err != 0)
-		errno = err;
-	perror(str);
+	if (err == 0)
+		err = errno;
+	print_error_msg2(str, strerror(err));
 	return ((t_vect){});
 }
 
@@ -70,7 +71,7 @@ t_vect	read_from_fd(int fd)
 			vect_dispose_each(&vect, free);
 	}
 	if (vect.p == NULL)
-		perror("read_from_fd (vect_push_back)");
+		_perror_return("read_from_fd (vect_push_back)", 0);
 	dispose_gnl_state(&gnl_state);
 	return (vect);
 }
