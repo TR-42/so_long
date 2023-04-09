@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 11:00:58 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/09 11:10:05 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/09 11:13:35 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 int	print_error_msg(const char *str)
 {
 	write(STDERR_FILENO, g_err, sizeof(g_err));
-	ft_putstr_fd((char *)str, STDERR_FILENO);
+	ft_putendl_fd((char *)str, STDERR_FILENO);
 	return (1);
 }
 
