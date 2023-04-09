@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/09 11:26:31 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/10 05:39:52 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,9 @@ fclean:	fclean_local
 
 re:	fclean all
 
+norm:
+	norminette ./headers $(SRC_DIR)
+
 -include $(DEPS) $(DEPS_BONUS)
 
-.PHONY:	clean_local MAKE_BEFORE bonus debug
+.PHONY:	clean_local MAKE_BEFORE bonus debug norm
