@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_window.c                                      :+:      :+:    :+:   */
+/*   mlx_key_pressed.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 09:46:08 by kfujita          ###   ########.fr       */
+/*   Created: 2023/04/10 08:24:10 by kfujita           #+#    #+#             */
+/*   Updated: 2023/04/10 09:49:27 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
+// - XK_Escape
+#include <X11/keysym.h>
 
-#include "error_messages.h"
+#include "mlx.h"
 
 #include "so_long.h"
 
-int	init_window(const char *argv0, t_so_long *d)
+int	on_key_pressed(int keycode, t_so_long *d)
 {
-	d->mlx = mlx_init();
-	if (d->mlx == NULL)
-		return (print_error_msg(g_err_mlx_init_failed));
-	d->mlx_win = mlx_new_window(d->mlx, d->col_count * IMG_WIDTH,
-			d->row_count * IMG_HEIGHT, (char *)argv0);
-	if (d->mlx_win == NULL)
-		return (print_error_msg(g_err_mlx_win_init_failed));
-	mlx_hook(d->mlx_win, 2, (1L << 0), on_key_pressed, d);
+	if (keycode == XK_Escape)
+		mlx_loop_end(d->mlx);
 	return (0);
 }

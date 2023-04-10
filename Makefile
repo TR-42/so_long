@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/10 08:39:30 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/10 09:48:39 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS	=\
 	ft_endwith.c \
 	init_window.c \
 	main.c \
+	mlx_key_pressed.c \
 	read_input.c \
 	t_so_long.c \
 	validate_input_solv.c \

@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 08:42:18 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 09:45:20 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ typedef struct s_so_long
 int		init_window(const char *argv0, t_so_long *d);
 void	dispose_so_long(t_so_long *d);
 
+int		on_key_pressed(int keycode, t_so_long *d);
 #endif
