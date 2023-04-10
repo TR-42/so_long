@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 08:32:18 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 21:48:17 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char const *argv[])
 	int			ret;
 	t_so_long	d;
 
+	d = (t_so_long){0};
 	if (argc != 2)
 		return (print_error_msg(g_err_inval_argc));
 	ret = init_struct(argv[1], &d);
