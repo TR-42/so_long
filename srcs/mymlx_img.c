@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 17:20:49 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 21:22:40 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 21:29:22 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 #include "mymlx.h"
 #include "so_long.h"
+
+static int	centering(int base_h_w, int img_h_w, int pos_x_y)
+{
+	return (((2 * pos_x_y) + base_h_w - img_h_w) / 2);
+}
 
 t_img	mymlx_img_open(const t_so_long *d, const char *fname)
 {
@@ -30,7 +35,10 @@ bool	mymlx_img_put(const t_so_long *d, const t_img *info, int x, int y)
 {
 	if (!d || !(d->mlx) || !(d->mlx_win) || !info || !(info->img))
 		return (false);
-	mlx_put_image_to_window(d->mlx, d->mlx_win, info->img, x, y);
+	mlx_put_image_to_window(d->mlx, d->mlx_win, info->img,
+		centering(IMG_WIDTH, info->width, x),
+		centering(IMG_HEIGHT, info->height, y)
+		);
 	return (true);
 }
 
