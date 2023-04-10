@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 09:45:20 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 20:35:49 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@
 
 # define IMG_WIDTH 32
 # define IMG_HEIGHT (IMG_WIDTH)
+
+typedef struct s_img
+{
+	void	*img;
+	int		height;
+	int		width;
+}	t_img;
 
 typedef struct s_so_long
 {
