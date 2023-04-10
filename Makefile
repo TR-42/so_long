@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/10 17:34:32 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/10 21:20:43 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	=\
 	mymlx_img.c \
 	read_input.c \
 	t_so_long.c \
+	update_canvas.c \
 	validate_input_solv.c \
 	validate_input.c \
 
