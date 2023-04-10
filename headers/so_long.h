@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 01:24:59 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 01:40:26 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define SO_LONG_H
 
 # include <stddef.h>
+
+# include "ft_vect/ft_vect.h"
 
 # define CHR_EMPTY_SPC '0'
 # define CHR_WALL '1'
@@ -48,12 +50,29 @@ typedef struct s_so_long
 	size_t		col_count;
 	size_t		start_row;
 	size_t		start_col;
+	size_t		counter;
+	t_vect		cmds;
 	t_img		img_cat;
 	t_img		img_empty_spc;
 	t_img		img_wall;
 	t_img		img_collective;
 	t_img		img_exit;
 }	t_so_long;
+
+typedef enum e_direction
+{
+	UNKNOWN,
+	LEFT,
+	UP,
+	RIGHT,
+	DOWN,
+}	t_direction;
+
+typedef struct s_mov_cmd
+{
+	int			count;
+	t_direction	direction;
+}	t_mov_cmd;
 
 int		init_window(const char *argv0, t_so_long *d);
 void	update_canvas(t_so_long *d);

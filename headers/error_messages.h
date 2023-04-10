@@ -37,6 +37,9 @@ static const char	g_err_map_data[]
 static const char	g_err_map_not_solvable[]
 	= "Invalid map data (unsolvable map)";
 
+static const char	g_err_malloc_failed_mov_cmd[]
+	= "Internal Error (cannot allocate memory for mov_cmd list)";
+
 static const char	g_err_mlx_init_failed[]
 	= "Internal Error (MiniLibX Initialization Failed)";
 

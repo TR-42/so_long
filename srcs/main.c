@@ -6,9 +6,12 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 22:09:09 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 23:00:55 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+// - free
+#include <stdlib.h>
 
 // - NULL
 // - STDERR_FILENO
@@ -46,7 +49,11 @@ static int	init_struct(const char *fname, t_so_long *d)
 		return (print_error_msg(g_err_map_data));
 	else if (!is_map_solvable(d))
 		return (print_error_msg(g_err_map_not_solvable));
-	return (0);
+	d->cmds = vect_init(32, sizeof(t_mov_cmd));
+	if (d->cmds.p != NULL)
+		return (0);
+	vect_dispose_each(&map_lines, free);
+	return (print_error_msg(g_err_malloc_failed_mov_cmd));
 }
 
 int	main(int argc, char const *argv[])
