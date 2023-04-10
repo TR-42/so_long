@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 21:22:09 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 21:44:56 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ void	update_canvas(t_so_long *d);
 void	dispose_so_long(t_so_long *d);
 
 int		on_key_pressed(int keycode, t_so_long *d);
+int		on_loop(t_so_long *d);
+
 #endif

@@ -6,7 +6,7 @@
 #    By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 11:21:04 by kfujita           #+#    #+#              #
-#    Updated: 2023/04/10 21:20:43 by kfujita          ###   ########.fr        #
+#    Updated: 2023/04/10 22:02:55 by kfujita          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	=\
 	init_window.c \
 	main.c \
 	mlx_key_pressed.c \
+	mlx_on_loop.c \
 	mymlx_img.c \
 	read_input.c \
 	t_so_long.c \
