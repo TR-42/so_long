@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 01:42:56 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 01:43:34 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ static void	put_imgs(t_so_long *d, t_xy *cl, t_xy *player)
 	if (c == CHR_START_POS)
 		*player = *cl;
 	else if (c == CHR_COLLECTIVE)
-		mymlx_img_put(d, &(d->img_collective), cl->x, cl->y);
+		mymlx_img_put_cr(d, &(d->img_collective), cl->x, cl->y);
 	else if (c == CHR_EMPTY_SPC)
-		mymlx_img_put(d, &(d->img_empty_spc), cl->x, cl->y);
+		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_MAP_EXIT)
-		mymlx_img_put(d, &(d->img_exit), cl->x, cl->y);
+		mymlx_img_put_cr(d, &(d->img_exit), cl->x, cl->y);
 	else if (c == CHR_VISITED)
-		mymlx_img_put(d, &(d->img_empty_spc), cl->x, cl->y);
+		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_WALL)
-		mymlx_img_put(d, &(d->img_wall), cl->x, cl->y);
+		mymlx_img_put_cr(d, &(d->img_wall), cl->x, cl->y);
 	cl->x++;
 }
 
