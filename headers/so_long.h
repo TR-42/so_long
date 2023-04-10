@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 01:11:28 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 01:24:59 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,14 @@
 
 # define CHR_VISITED '\a'
 
-# define IMG_WIDTH 32
+# define IMG_WIDTH 16
 # define IMG_HEIGHT (IMG_WIDTH)
+
+typedef struct s_xy
+{
+	int	x;
+	int	y;
+}	t_xy;
 
 typedef struct s_img
 {
