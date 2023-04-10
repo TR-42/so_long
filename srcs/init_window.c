@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 01:13:44 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 01:16:04 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "so_long.h"
 #include "mymlx.h"
 
-static bool	load_set_img(t_img *img, const char *path, const char err_str)
+static bool	load_set_img(t_img *img, const char *path, const char *err_str)
 {
 	*img = mymlx_img_open(d, path);
 	if (img->img != NULL)
@@ -31,6 +31,14 @@ static int	load_imgs(t_so_long *d)
 	return (
 		load_set_img(&(d->img_cat), IMG_PATH_WHITE_CAT,
 			g_err_mlx_load_img_failed_white_cat)
+		&& load_set_img(&(d->img_empty_spc), IMG_PATH_EMPTY_SPC,
+			g_err_mlx_load_img_failed_empty_spc)
+		&& load_set_img(&(d->img_wall), IMG_PATH_WALL,
+			g_err_mlx_load_img_failed_wall)
+		&& load_set_img(&(d->img_collective), IMG_PATH_COLLECTIVE,
+			g_err_mlx_load_img_failed_collective)
+		&& load_set_img(&(d->img_exit), IMG_PATH_EXIT,
+			g_err_mlx_load_img_failed_exit)
 	);
 }
 

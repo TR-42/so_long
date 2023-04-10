@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 20:49:41 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 01:15:35 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define ERROR_MESSAGES_H
 
 # define IMG_PATH_WHITE_CAT "./xpms/cat_tanmo_shiro.xpm"
+# define IMG_PATH_EMPTY_SPC "./xpms/texture_sogen_01.xpm"
+# define IMG_PATH_WALL "./xpms/texture_renga_brown_01.xpm"
+# define IMG_PATH_COLLECTIVE "./xpms/coin_gold_02.xpm"
+# define IMG_PATH_EXIT "./xpms/mark_mappin.xpm"
 
 static const char	g_err[]
 	= "Error\n";
@@ -41,6 +45,19 @@ static const char	g_err_mlx_win_init_failed[]
 
 static const char	g_err_mlx_load_img_failed_white_cat[]
 	= "Cannot load asset file `" IMG_PATH_WHITE_CAT "` (maybe: file not found)";
+
+static const char	g_err_mlx_load_img_failed_empty_spc[]
+	= "Cannot load asset file `" IMG_PATH_EMPTY_SPC "` (maybe: file not found)";
+
+static const char	g_err_mlx_load_img_failed_wall[]
+	= "Cannot load asset file `" IMG_PATH_WALL "` (maybe: file not found)";
+
+static const char	g_err_mlx_load_img_failed_collective[]
+	= "Cannot load asset file `"
+	IMG_PATH_COLLECTIVE "` (maybe: file not found)";
+
+static const char	g_err_mlx_load_img_failed_exit[]
+	= "Cannot load asset file `" IMG_PATH_EXIT "` (maybe: file not found)";
 
 int	print_error_msg2(const char *str1, const char *str2);
 int	print_error_msg(const char *str);

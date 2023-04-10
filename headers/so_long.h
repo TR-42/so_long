@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 21:44:56 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 01:11:28 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ typedef struct s_so_long
 	size_t		start_row;
 	size_t		start_col;
 	t_img		img_cat;
+	t_img		img_empty_spc;
+	t_img		img_wall;
+	t_img		img_collective;
+	t_img		img_exit;
 }	t_so_long;
 
 int		init_window(const char *argv0, t_so_long *d);
