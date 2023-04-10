@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 20:50:23 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/10 21:23:51 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	init_window(const char *argv0, t_so_long *d)
 	if (d->mlx_win == NULL)
 		return (print_error_msg(g_err_mlx_win_init_failed));
 	mlx_hook(d->mlx_win, 2, (1L << 0), on_key_pressed, d);
-	mlx_put_image_to_window(d->mlx, d->mlx_win, d->img_cat.img, 32, 32);
+	update_canvas(d);
 	return (0);
 }
