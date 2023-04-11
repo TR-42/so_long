@@ -6,14 +6,13 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:44:31 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:38:32 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:39:24 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 
 #include "so_long.h"
-#include <stdio.h>
 
 #define STEP 0xFFF
 
