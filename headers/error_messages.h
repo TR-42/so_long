@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:36:48 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 08:08:11 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@
 static const char	g_err[]
 	= "Error\n";
 
+static const char	g_err_fname_too_short[]
+	= "Map file name too short.";
+
 static const char	g_err_inval_extension[]
-	= "Invalid filename. It must end with `.ber`.";
+	= "Invalid filename. It must have the extension `.ber`.";
 
 static const char	g_err_inval_argc[]
 	= "Invalid argc (usage: `so_long MAP_FILE_NAME`)";
