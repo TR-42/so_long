@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:41:07 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 19:27:52 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:43:18 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,16 @@ bool	is_valid_map_style(const t_so_long *d)
 static bool	_is_valid_map_data(t_so_long *d, const t_uxy *cr,
 	size_t *map_exit, size_t *start_pos)
 {
-	d->collectives += (d->map[cr->y][cr->x] == CHR_COLLECTIVE);
-	map_exit += (d->map[cr->y][cr->x] == CHR_MAP_EXIT);
-	if (d->map[cr->y][cr->x] == CHR_START_POS)
+	d->collectives += (*c_at(d, cr) == CHR_COLLECTIVE);
+	map_exit += (*c_at(d, cr) == CHR_MAP_EXIT);
+	if (*c_at(d, cr) == CHR_START_POS)
 	{
 		start_pos += 1;
 		d->player = *cr;
 	}
 	if (1 < *map_exit || 1 < *start_pos || ((cr->y == 0 || cr->x == 0
 				|| cr->y == (d->row_count - 1) || cr->x == (d->col_count - 1))
-			&& d->map[cr->y][cr->x] != CHR_WALL))
+			&& *c_at(d, cr) != CHR_WALL))
 		return (false);
 	return (true);
 }

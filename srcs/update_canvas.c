@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 19:47:39 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:42:30 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	put_imgs(const t_so_long *d, const t_uxy *cl)
 {
 	char	c;
 
-	c = d->map[cl->y][cl->x];
+	c = *c_at(d, cl);
 	if (c == CHR_START_POS)
 		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_COLLECTIVE)
