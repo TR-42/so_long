@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:33:24 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:14:21 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef enum e_direction
 
 typedef struct s_mov_cmd
 {
-	int			count;
-	t_direction	direction;
+	char	count;
+	char	direction;
 }	t_mov_cmd;
 
 int		init_window(const char *argv0, t_so_long *d);
