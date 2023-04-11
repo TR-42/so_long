@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 23:00:55 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:39:38 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	init_struct(const char *fname, t_so_long *d)
 	map_lines = read_from_fname(fname);
 	if (map_lines.p == NULL)
 		return (1);
-	d->map = (const char **)map_lines.p;
+	d->map = map_lines.p;
 	d->row_count = map_lines.len;
 	d->col_count = ft_strlen(d->map[0]);
 	if (d->map[0][d->col_count - 1] == '\n')

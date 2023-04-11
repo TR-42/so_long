@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 19:33:03 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:42:42 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_so_long
 {
 	void		*mlx;
 	void		*mlx_win;
-	const char	**map;
+	char		**map;
 	size_t		row_count;
 	size_t		col_count;
 	size_t		start_row;
@@ -88,5 +88,7 @@ void	dispose_so_long(t_so_long *d);
 
 int		on_key_pressed(int keycode, t_so_long *d);
 int		on_loop(t_so_long *d);
+
+char	*c_at(const t_so_long *d, const t_uxy *cr);
 
 #endif
