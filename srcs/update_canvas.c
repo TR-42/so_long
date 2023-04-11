@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 01:43:34 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 19:01:28 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static void	put_imgs(t_so_long *d, t_xy *cl, t_xy *player)
 
 	c = d->map[cl->y][cl->x];
 	if (c == CHR_START_POS)
+	{
 		*player = *cl;
+		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
+	}
 	else if (c == CHR_COLLECTIVE)
 		mymlx_img_put_cr(d, &(d->img_collective), cl->x, cl->y);
 	else if (c == CHR_EMPTY_SPC)
