@@ -6,11 +6,12 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 07:13:58 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 08:09:50 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
+#include "X11/X.h"
 
 #include "error_messages.h"
 
@@ -51,6 +52,12 @@ static int	_on_exposed(t_so_long *d)
 	return (0);
 }
 
+static int	_on_destroyed(t_so_long *d)
+{
+	mlx_loop_end(d->mlx);
+	return (0);
+}
+
 int	init_window(const char *argv0, t_so_long *d)
 {
 	d->mlx = mlx_init();
@@ -65,6 +72,7 @@ int	init_window(const char *argv0, t_so_long *d)
 	mlx_loop_hook(d->mlx, on_loop, d);
 	mlx_expose_hook(d->mlx, _on_exposed, d);
 	mlx_hook(d->mlx_win, 2, (1L << 0), on_key_pressed, d);
+	mlx_hook(d->mlx, DestroyNotify, StructureNotifyMask, _on_destroyed, d);
 	update_canvas(d, NULL);
 	return (0);
 }
