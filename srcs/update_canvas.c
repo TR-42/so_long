@@ -6,15 +6,13 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 21:42:30 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 21:48:52 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "mymlx.h"
 #include "so_long.h"
-
-static void	put_imgs(const t_so_long *d, const t_uxy *cl);
 
 static void	apply_half_move(const t_so_long *d, const t_mov_cmd *cmd,
 	t_uxy *player)
@@ -30,7 +28,7 @@ static void	apply_half_move(const t_so_long *d, const t_mov_cmd *cmd,
 		player->x += IMG_WIDTH * 0.5;
 }
 
-static void	put_imgs(const t_so_long *d, const t_uxy *cl)
+void	put_imgs(const t_so_long *d, const t_uxy *cl)
 {
 	char	c;
 
