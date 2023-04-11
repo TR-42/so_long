@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:14:21 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:16:08 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct s_so_long
 	size_t		col_count;
 	size_t		start_row;
 	size_t		start_col;
+	size_t		mov_count;
 	size_t		counter;
 	int			collectives;
 	t_uxy		exit;
@@ -70,11 +71,11 @@ typedef struct s_so_long
 
 typedef enum e_direction
 {
-	UNKNOWN,
-	LEFT,
-	UP,
-	RIGHT,
-	DOWN,
+	UNKNOWN = '?',
+	LEFT = 'L',
+	UP = 'U',
+	RIGHT = 'R',
+	DOWN = 'D',
 }	t_direction;
 
 typedef struct s_mov_cmd
