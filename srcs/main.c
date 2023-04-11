@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 21:39:38 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:40:35 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 // - NULL
 // - STDERR_FILENO
 // - write
+// (for debug)
+// - getpid
+// - system
 #include <unistd.h>
+
+// (for debug)
+// - sprintf
+#include <stdio.h>
 
 #include "mlx.h"
 
@@ -73,3 +80,17 @@ int	main(int argc, char const *argv[])
 	dispose_so_long(&d);
 	return (ret);
 }
+
+#if DEBUG
+
+# define DEBUG_LEAKS_CMD_LEN (32)
+
+__attribute__((destructor))
+static void	destructor(void) {
+	char	cmd[DEBUG_LEAKS_CMD_LEN];
+
+	snprintf(cmd, DEBUG_LEAKS_CMD_LEN, "leaks %d", getpid());
+	system(cmd);
+}
+
+#endif
