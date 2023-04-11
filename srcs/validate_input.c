@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:41:07 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 06:39:37 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 19:27:52 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,34 +56,45 @@ bool	is_valid_map_style(const t_so_long *d)
 	return (true);
 }
 
+static bool	_is_valid_map_data(t_so_long *d, const t_uxy *cr,
+	size_t *map_exit, size_t *start_pos)
+{
+	d->collectives += (d->map[cr->y][cr->x] == CHR_COLLECTIVE);
+	map_exit += (d->map[cr->y][cr->x] == CHR_MAP_EXIT);
+	if (d->map[cr->y][cr->x] == CHR_START_POS)
+	{
+		start_pos += 1;
+		d->player = *cr;
+	}
+	if (1 < *map_exit || 1 < *start_pos || ((cr->y == 0 || cr->x == 0
+				|| cr->y == (d->row_count - 1) || cr->x == (d->col_count - 1))
+			&& d->map[cr->y][cr->x] != CHR_WALL))
+		return (false);
+	return (true);
+}
+
 // checks...
 // - is it closed/surrounded with wall?
 // - start/exit/collectable count
-bool	is_valid_map_data(const t_so_long *d)
+bool	is_valid_map_data(t_so_long *d)
 {
-	size_t	r;
-	size_t	c;
-	size_t	collective;
+	t_uxy	cr;
 	size_t	map_exit;
 	size_t	start_pos;
 
-	r = 0;
-	collective = 0;
+	cr.y = 0;
 	map_exit = 0;
 	start_pos = 0;
-	while (r++ < d->row_count)
+	while (cr.y < d->row_count)
 	{
-		c = 0;
-		while (c++ < d->col_count)
+		cr.x = 0;
+		while (cr.x < d->col_count)
 		{
-			collective += (d->map[r - 1][c - 1] == CHR_COLLECTIVE);
-			map_exit += (d->map[r - 1][c - 1] == CHR_MAP_EXIT);
-			start_pos += (d->map[r - 1][c - 1] == CHR_START_POS);
-			if (1 < map_exit || 1 < start_pos || ((r == 1 || c == 1
-						|| r == d->row_count || c == d->col_count)
-					&& d->map[r - 1][c - 1] != CHR_WALL))
+			if (!_is_valid_map_data(d, &cr, &map_exit, &start_pos))
 				return (false);
+			cr.x++;
 		}
+		cr.y++;
 	}
-	return (0 < collective);
+	return (0 < d->collectives);
 }
