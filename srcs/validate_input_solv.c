@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 06:38:19 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 07:24:26 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 23:29:54 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "ft_string/ft_string.h"
 
 #include "validate_input.h"
-
 
 static t_so_long	dup_so_long(const t_so_long *d)
 {
