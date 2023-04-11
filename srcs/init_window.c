@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:39:46 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 07:13:58 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ static int	load_imgs(t_so_long *d)
 	);
 }
 
+static int	_on_exposed(t_so_long *d)
+{
+	update_canvas(d, NULL);
+	return (0);
+}
+
 int	init_window(const char *argv0, t_so_long *d)
 {
 	d->mlx = mlx_init();
@@ -57,6 +63,7 @@ int	init_window(const char *argv0, t_so_long *d)
 	if (d->mlx_win == NULL)
 		return (print_error_msg(g_err_mlx_win_init_failed));
 	mlx_loop_hook(d->mlx, on_loop, d);
+	mlx_expose_hook(d->mlx, _on_exposed, d);
 	mlx_hook(d->mlx_win, 2, (1L << 0), on_key_pressed, d);
 	update_canvas(d, NULL);
 	return (0);
