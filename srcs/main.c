@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 23:36:54 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 00:02:42 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 #include "ft_put/ft_put.h"
 #include "ft_string/ft_string.h"
+#include "ft_printf/ft_printf.h"
 
 #include "ft_endwith.h"
 #include "read_input.h"
@@ -63,6 +64,15 @@ static int	init_struct(const char *fname, t_so_long *d)
 	return (print_error_msg(g_err_malloc_failed_mov_cmd));
 }
 
+static int	print_result(const t_so_long *d)
+{
+	if (d->collectives <= 0)
+		ft_printf("CLEAR!! (move count: %u)\n", (unsigned)d->mov_count);
+	else
+		ft_printf("Failed... (move count: %u)\n", (unsigned)d->mov_count);
+	return (0);
+}
+
 int	main(int argc, char const *argv[])
 {
 	int			ret;
@@ -76,7 +86,7 @@ int	main(int argc, char const *argv[])
 	{
 		ret = init_window(argv[0], &d);
 		if (ret == 0)
-			mlx_loop(d.mlx);
+			ret = mlx_loop(d.mlx) * print_result(&d);
 	}
 	dispose_so_long(&d);
 	return (ret);
