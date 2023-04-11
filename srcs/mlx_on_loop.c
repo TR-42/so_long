@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:44:31 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:32:49 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:38:32 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "so_long.h"
 #include <stdio.h>
 
-#define STEP 0x7FFF
+#define STEP 0xFFF
 
 static void	_on_move(t_so_long *d, t_mov_cmd *cmd, const t_uxy *cr)
 {
