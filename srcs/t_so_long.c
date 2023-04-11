@@ -6,25 +6,45 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 06:44:01 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 21:54:32 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 23:48:32 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "mymlx.h"
+#include "ft_mem/ft_mem.h"
 
+#include <mlx.h>
+
+// - NULL
 #include <stddef.h>
+
+// - free
 #include <stdlib.h>
 
 void	dispose_so_long(t_so_long *d)
 {
 	size_t	i;
 
-	if (d == NULL)
+	if (d == NULL || ft_memcmp(d, &(t_so_long){0}, sizeof(t_so_long)) == 0)
 		return ;
 	i = 0;
 	while (i++ < d->row_count)
 		free((void *)(d->map[i - 1]));
 	free(d->map);
+	vect_dispose(&(d->cmds));
+	mymlx_img_destory(d, &(d->img_cat));
+	mymlx_img_destory(d, &(d->img_collective));
+	mymlx_img_destory(d, &(d->img_empty_spc));
+	mymlx_img_destory(d, &(d->img_exit));
+	mymlx_img_destory(d, &(d->img_wall));
+	if (d->mlx != NULL)
+	{
+		if (d->mlx_win != NULL)
+			mlx_destroy_window(d->mlx, d->mlx_win);
+		mlx_destroy_display(d->mlx);
+		free(d->mlx);
+	}
 	*d = (t_so_long){0};
 }
 
