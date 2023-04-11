@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 19:33:23 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:39:46 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ static int	load_imgs(t_so_long *d)
 			g_err_mlx_load_img_failed_empty_spc)
 		&& load_set_img(d, &(d->img_wall), IMG_PATH_WALL,
 			g_err_mlx_load_img_failed_wall)
-		&& load_set_img(d, &(d->img_collective), IMG_PATH_COLLECTIVE,
-			g_err_mlx_load_img_failed_collective)
+		&& load_set_img(d, &(d->img_collective1), IMG_PATH_COLLECTIVE1,
+			g_err_mlx_load_img_failed_collective1)
+		&& load_set_img(d, &(d->img_collective2), IMG_PATH_COLLECTIVE2,
+			g_err_mlx_load_img_failed_collective2)
 		&& load_set_img(d, &(d->img_exit), IMG_PATH_EXIT,
 			g_err_mlx_load_img_failed_exit)
 	);

@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:30:26 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:44:31 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ static void	apply_half_move(const t_so_long *d, const t_mov_cmd *cmd,
 		player->x += IMG_WIDTH * 0.5;
 }
 
+void	put_collective(const t_so_long *d, const t_uxy *cl,
+	bool put_only_collective)
+{
+	char	c;
+
+	c = *c_at(d, cl);
+	if (c == CHR_COLLECTIVE)
+	{
+		if (((d->counter / (STEP + 1)) & 0b100) == 0)
+			mymlx_img_put_cr(d, &(d->img_collective1), cl->x, cl->y);
+		else
+			mymlx_img_put_cr(d, &(d->img_collective2), cl->x, cl->y);
+	}
+	else if (!put_only_collective)
+		put_imgs(d, cl);
+}
+
 void	put_imgs(const t_so_long *d, const t_uxy *cl)
 {
 	char	c;
@@ -38,7 +55,7 @@ void	put_imgs(const t_so_long *d, const t_uxy *cl)
 	else if (c == CHR_START_POS)
 		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_COLLECTIVE)
-		mymlx_img_put_cr(d, &(d->img_collective), cl->x, cl->y);
+		put_collective(d, cl, true);
 	else if (c == CHR_EMPTY_SPC)
 		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_VISITED)
@@ -56,21 +73,20 @@ void	update_canvas(t_so_long *d, const t_mov_cmd *cmd)
 	player.x *= IMG_WIDTH;
 	player.y *= IMG_HEIGHT;
 	if (cmd == NULL)
-	{
 		mlx_clear_window(d->mlx, d->mlx_win);
-		cl.y = 0;
-		while (cl.y < d->row_count)
+	cl.y = 0;
+	while (cl.y < d->row_count)
+	{
+		cl.x = 0;
+		while (cl.x < d->col_count)
 		{
-			cl.x = 0;
-			while (cl.x < d->col_count)
-			{
-				put_imgs(d, &cl);
-				cl.x++;
-			}
-			cl.y++;
+			put_collective(d, &cl, (cmd != NULL
+					&& (cmd->direction == 0 || cmd->direction == UNKNOWN)));
+			cl.x++;
 		}
+		cl.y++;
 	}
-	else if (cmd->direction != UNKNOWN)
+	if (cmd != NULL && cmd->direction != 0 && cmd->direction != UNKNOWN)
 		apply_half_move(d, cmd, &player);
 	mymlx_img_put(d, &(d->img_cat), player.x, player.y);
 }

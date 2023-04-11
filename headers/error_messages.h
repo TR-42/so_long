@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:21:27 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:36:48 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define IMG_PATH_WHITE_CAT "./xpms/cat_tanmo_shiro.xpm"
 # define IMG_PATH_EMPTY_SPC "./xpms/texture_sogen_01.xpm"
 # define IMG_PATH_WALL "./xpms/texture_renga_brown_01.xpm"
-# define IMG_PATH_COLLECTIVE "./xpms/coin_gold_02_sogen.xpm"
+# define IMG_PATH_COLLECTIVE1 "./xpms/coin_gold_01_sogen.xpm"
+# define IMG_PATH_COLLECTIVE2 "./xpms/coin_gold_02_sogen.xpm"
 # define IMG_PATH_EXIT "./xpms/mark_mappin_sogen.xpm"
 
 static const char	g_err[]
@@ -58,9 +59,13 @@ static const char	g_err_mlx_load_img_failed_empty_spc[]
 static const char	g_err_mlx_load_img_failed_wall[]
 	= "Cannot load asset file `" IMG_PATH_WALL "` (maybe: file not found)";
 
-static const char	g_err_mlx_load_img_failed_collective[]
+static const char	g_err_mlx_load_img_failed_collective1[]
 	= "Cannot load asset file `"
-	IMG_PATH_COLLECTIVE "` (maybe: file not found)";
+	IMG_PATH_COLLECTIVE1 "` (maybe: file not found)";
+
+static const char	g_err_mlx_load_img_failed_collective2[]
+	= "Cannot load asset file `"
+	IMG_PATH_COLLECTIVE2 "` (maybe: file not found)";
 
 static const char	g_err_mlx_load_img_failed_exit[]
 	= "Cannot load asset file `" IMG_PATH_EXIT "` (maybe: file not found)";

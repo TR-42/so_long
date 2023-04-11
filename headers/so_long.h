@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:16:08 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:36:16 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # define IMG_WIDTH 16
 # define IMG_HEIGHT (IMG_WIDTH)
+
+# define STEP 0xFFF
 
 typedef struct s_xy
 {
@@ -65,7 +67,8 @@ typedef struct s_so_long
 	t_img		img_cat;
 	t_img		img_empty_spc;
 	t_img		img_wall;
-	t_img		img_collective;
+	t_img		img_collective1;
+	t_img		img_collective2;
 	t_img		img_exit;
 }	t_so_long;
 

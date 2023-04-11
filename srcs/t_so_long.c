@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 06:44:01 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 23:48:32 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:39:19 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	dispose_so_long(t_so_long *d)
 	free(d->map);
 	vect_dispose(&(d->cmds));
 	mymlx_img_destory(d, &(d->img_cat));
-	mymlx_img_destory(d, &(d->img_collective));
+	mymlx_img_destory(d, &(d->img_collective1));
+	mymlx_img_destory(d, &(d->img_collective2));
 	mymlx_img_destory(d, &(d->img_empty_spc));
 	mymlx_img_destory(d, &(d->img_exit));
 	mymlx_img_destory(d, &(d->img_wall));

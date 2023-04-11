@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:44:31 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:10:01 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:28:38 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include "ft_string/ft_string.h"
 #include "ft_printf/ft_printf.h"
 
-#define STEP 0xFFF
 #define COUNT_INIT_STR "Count: 0"
 
 static bool	_on_move_back_from_wall(t_so_long *d,
@@ -97,17 +96,23 @@ int	on_loop(t_so_long *d)
 	t_uxy		cr;
 	size_t		i;
 
+	cmd = (t_mov_cmd){0};
 	_put_print_mov_count(d, NULL);
-	if ((++(d->counter) & STEP) != 0 || d->cmds.len <= 0)
+	if ((++(d->counter) & STEP) != 0)
 		return (0);
-	((t_mov_cmd *)(d->cmds.p))->count++;
-	cmd = *(t_mov_cmd *)(d->cmds.p);
-	cr = apply_cmd(&cmd, &(d->player));
-	_on_move(d, &cmd, &cr, c_at(d, &cr));
-	i = 0;
-	while (i++ < d->col_count - 1)
-		put_imgs(d, &(t_uxy){i, 0});
-	update_canvas(d, &cmd);
-	_put_print_mov_count(d, &cmd);
+	if (0 < d->cmds.len)
+	{
+		((t_mov_cmd *)(d->cmds.p))->count++;
+		cmd = *(t_mov_cmd *)(d->cmds.p);
+		cr = apply_cmd(&cmd, &(d->player));
+		_on_move(d, &cmd, &cr, c_at(d, &cr));
+		i = 0;
+		while (i++ < d->col_count - 1)
+			put_imgs(d, &(t_uxy){i, 0});
+		update_canvas(d, &cmd);
+		_put_print_mov_count(d, &cmd);
+	}
+	else
+		update_canvas(d, &cmd);
 	return (0);
 }
