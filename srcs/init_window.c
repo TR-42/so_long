@@ -70,9 +70,9 @@ int	init_window(const char *argv0, t_so_long *d)
 	if (d->mlx_win == NULL)
 		return (print_error_msg(g_err_mlx_win_init_failed));
 	mlx_loop_hook(d->mlx, on_loop, d);
-	mlx_expose_hook(d->mlx, _on_exposed, d);
-	mlx_hook(d->mlx_win, 2, (1L << 0), on_key_pressed, d);
-	mlx_hook(d->mlx, DestroyNotify, StructureNotifyMask, _on_destroyed, d);
+	mlx_expose_hook(d->mlx_win, _on_exposed, d);
+	mlx_key_hook(d->mlx_win, on_key_pressed, d);
+	mlx_hook(d->mlx_win, DestroyNotify, StructureNotifyMask, _on_destroyed, d);
 	update_canvas(d, NULL);
 	return (0);
 }
