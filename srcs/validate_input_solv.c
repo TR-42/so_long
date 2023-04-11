@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 06:38:19 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 23:29:54 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 06:58:35 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_so_long	dup_so_long(const t_so_long *d)
 			break ;
 		v.row_count++;
 	}
+	v.collectives = d->collectives;
 	v.col_count = d->col_count;
 	v.start_row = d->start_row;
 	v.start_col = d->start_col;
@@ -39,21 +40,25 @@ static t_so_long	dup_so_long(const t_so_long *d)
 	return (v);
 }
 
-static bool	go_to_goal(const t_so_long *d, size_t row, size_t col)
+static bool	go_to_goal(t_so_long *d, size_t row, size_t col, bool *is_goaled)
 {
 	char	c;
 
 	c = d->map[row][col];
 	if (c == CHR_MAP_EXIT)
-		return (true);
+		*is_goaled = true;
+	else if (c == CHR_COLLECTIVE)
+		d->collectives--;
 	else if (c == CHR_WALL || c == CHR_VISITED)
 		return (false);
 	((char *)d->map[row])[col] = CHR_VISITED;
+	if (*is_goaled && d->collectives <= 0)
+		return (true);
 	return (
-		go_to_goal(d, row + 1, col)
-		|| go_to_goal(d, row, col + 1)
-		|| go_to_goal(d, row, col - 1)
-		|| go_to_goal(d, row - 1, col)
+		go_to_goal(d, row + 1, col, is_goaled)
+		|| go_to_goal(d, row, col + 1, is_goaled)
+		|| go_to_goal(d, row, col - 1, is_goaled)
+		|| go_to_goal(d, row - 1, col, is_goaled)
 	);
 }
 
@@ -62,6 +67,7 @@ static bool	go_to_goal(const t_so_long *d, size_t row, size_t col)
 bool	is_map_solvable(t_so_long *d)
 {
 	t_so_long	v;
+	bool		is_goaled;
 	bool		is_solvable;
 	size_t		row;
 	size_t		col;
@@ -82,7 +88,8 @@ bool	is_map_solvable(t_so_long *d)
 	v = dup_so_long(d);
 	if (v.map == NULL)
 		return (false);
-	is_solvable = go_to_goal(&v, v.start_row, v.start_col);
+	is_goaled = false;
+	is_solvable = go_to_goal(&v, v.start_row, v.start_col, &is_goaled);
 	dispose_so_long(&v);
 	return (is_solvable);
 }
