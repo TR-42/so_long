@@ -69,6 +69,8 @@ void	update_canvas(t_so_long *d, const t_mov_cmd *cmd)
 	t_uxy		cl;
 	t_uxy		player;
 
+	if (d->mlx == NULL)
+		return ;
 	player = d->player;
 	player.x *= IMG_WIDTH;
 	player.y *= IMG_HEIGHT;

@@ -54,7 +54,7 @@ static int	_on_exposed(t_so_long *d)
 
 static int	_on_destroyed(t_so_long *d)
 {
-	mlx_loop_end(d->mlx);
+	dispose_so_long(d->mlx);
 	return (0);
 }
 

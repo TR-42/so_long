@@ -54,7 +54,7 @@ static void	_on_move(t_so_long *d, t_mov_cmd *cmd, const t_uxy *cr, char *c_to)
 		if (*c_to == CHR_COLLECTIVE)
 			d->collectives--;
 		if (*c_to == CHR_MAP_EXIT && d->collectives <= 0)
-			mlx_loop_end(d->mlx);
+			dispose_so_long(d);
 		if (d->player.x == d->exit.x && d->player.y == d->exit.y)
 			*c_at(d, &(d->player)) = CHR_MAP_EXIT;
 		else
@@ -96,6 +96,8 @@ int	on_loop(t_so_long *d)
 	t_uxy		cr;
 	size_t		i;
 
+	if (d->mlx == NULL)
+		return (0);
 	cmd = (t_mov_cmd){0};
 	_put_print_mov_count(d, NULL);
 	if ((++(d->counter) & STEP) != 0)

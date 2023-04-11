@@ -43,7 +43,6 @@ void	dispose_so_long(t_so_long *d)
 	{
 		if (d->mlx_win != NULL)
 			mlx_destroy_window(d->mlx, d->mlx_win);
-		mlx_destroy_display(d->mlx);
 		free(d->mlx);
 	}
 	*d = (t_so_long){0};

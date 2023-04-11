@@ -39,9 +39,9 @@ LIBFT_MAKE	=	make -C $(LIBFT_DIR)
 
 X11_DIR	=	/usr/X11
 
-MLX_DIR	=	minilibx-linux
-MLX_FNAME	=	libmlx.a
-MLX	=	$(MLX_DIR)/$(MLX_FNAME)
+MLX_DIR	=	minilibx-mms
+MLX_FNAME	=	libmlx.dylib
+MLX	=	$(MLX_FNAME)
 MLX_MAKE	=	make -C $(MLX_DIR)
 
 override CFLAGS	+=	-Wall -Wextra -Werror -MMD -MP
@@ -52,7 +52,10 @@ CC		=	cc
 all:	$(NAME)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) -lm $(INCLUDES) -L $(LIBFT_DIR) -lft -L $(MLX_DIR) -lmlx -L$(X11_DIR)/lib -lXext -lX11 -o $@ $(OBJS)
+	$(CC) $(CFLAGS) -lm $(INCLUDES)\
+		-L $(LIBFT_DIR) -lft\
+		-L $(MLX_DIR) -lmlx -framework OpenGL -framework AppKit\
+		-o $@ $(OBJS)
 
 $(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
@@ -63,6 +66,7 @@ $(LIBFT):
 
 $(MLX):
 	$(MLX_MAKE)
+	cp $(MLX_DIR)/$(MLX_FNAME) ./
 
 bonus:
 	@make
@@ -84,6 +88,7 @@ clean: clean_local
 fclean:	fclean_local
 	$(LIBFT_MAKE) fclean
 	$(MLX_MAKE) clean
+	rm -f $(MLX)
 
 re:	fclean all
 

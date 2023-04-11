@@ -23,7 +23,7 @@ int	on_key_pressed(int keycode, t_so_long *d)
 
 	cmd = (t_mov_cmd){0};
 	if (keycode == XK_Escape)
-		mlx_loop_end(d->mlx);
+		dispose_so_long(d->mlx);
 	else if (keycode == XK_w || keycode == XK_Up)
 		cmd.direction = UP;
 	else if (keycode == XK_a || keycode == XK_Left)
