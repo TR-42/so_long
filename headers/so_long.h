@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:23:19 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:33:24 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ int		on_key_pressed(int keycode, t_so_long *d);
 int		on_loop(t_so_long *d);
 
 char	*c_at(const t_so_long *d, const t_uxy *cr);
+t_uxy	apply_cmd(const t_mov_cmd *cmd, const t_uxy *cr);
 
 #endif
