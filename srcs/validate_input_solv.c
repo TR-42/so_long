@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 06:38:19 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 06:58:35 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 07:01:44 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ static t_so_long	dup_so_long(const t_so_long *d)
 	}
 	v.collectives = d->collectives;
 	v.col_count = d->col_count;
-	v.start_row = d->start_row;
-	v.start_col = d->start_col;
+	v.start = d->start;
 	if (v.row_count != d->row_count)
 		dispose_so_long(&v);
 	return (v);
@@ -73,23 +72,18 @@ bool	is_map_solvable(t_so_long *d)
 	size_t		col;
 
 	row = 0;
-	while (++row < d->row_count && d->start_row == 0)
+	while (++row < d->row_count && d->start.y == 0)
 	{
 		col = 0;
-		while (++col < d->col_count && d->start_col == 0)
-		{
+		while (++col < d->col_count && d->start.x == 0)
 			if (d->map[row][col] == CHR_START_POS)
-			{
-				d->start_row = row;
-				d->start_col = col;
-			}
-		}
+				d->start = (t_uxy){col, row};
 	}
 	v = dup_so_long(d);
 	if (v.map == NULL)
 		return (false);
 	is_goaled = false;
-	is_solvable = go_to_goal(&v, v.start_row, v.start_col, &is_goaled);
+	is_solvable = go_to_goal(&v, v.start.y, v.start.x, &is_goaled);
 	dispose_so_long(&v);
 	return (is_solvable);
 }

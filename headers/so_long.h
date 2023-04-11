@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:36:16 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 07:00:21 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ typedef struct s_so_long
 	char		**map;
 	size_t		row_count;
 	size_t		col_count;
-	size_t		start_row;
-	size_t		start_col;
+	t_uxy		start;
 	size_t		mov_count;
 	size_t		counter;
 	int			collectives;
