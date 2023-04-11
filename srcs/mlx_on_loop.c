@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:44:31 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/10 22:03:06 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 19:33:30 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@
 
 int	on_loop(t_so_long *d)
 {
+	t_mov_cmd	cmd;
+
 	if ((++(d->counter) & STEP) != 0 || d->cmds.len <= 0)
 		return (0);
-	update_canvas(d);
+	cmd = *(t_mov_cmd *)(d->cmds.p);
+	update_canvas(d, &cmd);
 	return (0);
 }

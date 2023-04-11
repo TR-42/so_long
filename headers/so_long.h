@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 19:23:53 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 19:33:03 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ typedef struct s_mov_cmd
 }	t_mov_cmd;
 
 int		init_window(const char *argv0, t_so_long *d);
-void	update_canvas(t_so_long *d);
+void	update_canvas(t_so_long *d, const t_mov_cmd *cmd);
 void	dispose_so_long(t_so_long *d);
 
 int		on_key_pressed(int keycode, t_so_long *d);
