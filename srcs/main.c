@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:40:35 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 23:36:54 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,12 @@ int	main(int argc, char const *argv[])
 	if (argc != 2)
 		return (print_error_msg(g_err_inval_argc));
 	ret = init_struct(argv[1], &d);
-	if (ret != 0)
-		return (ret);
-	ret = init_window(argv[0], &d);
 	if (ret == 0)
-		mlx_loop(d.mlx);
+	{
+		ret = init_window(argv[0], &d);
+		if (ret == 0)
+			mlx_loop(d.mlx);
+	}
 	dispose_so_long(&d);
 	return (ret);
 }
