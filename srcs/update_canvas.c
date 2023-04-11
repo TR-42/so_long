@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 21:48:52 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:30:26 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	put_imgs(const t_so_long *d, const t_uxy *cl)
 	char	c;
 
 	c = *c_at(d, cl);
-	if (c == CHR_START_POS)
+	if (c == CHR_MAP_EXIT || (cl->x == d->exit.x && cl->y == d->exit.y))
+		mymlx_img_put_cr(d, &(d->img_exit), cl->x, cl->y);
+	else if (c == CHR_START_POS)
 		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_COLLECTIVE)
 		mymlx_img_put_cr(d, &(d->img_collective), cl->x, cl->y);
 	else if (c == CHR_EMPTY_SPC)
 		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
-	else if (c == CHR_MAP_EXIT)
-		mymlx_img_put_cr(d, &(d->img_exit), cl->x, cl->y);
 	else if (c == CHR_VISITED)
 		mymlx_img_put_cr(d, &(d->img_empty_spc), cl->x, cl->y);
 	else if (c == CHR_WALL)
@@ -73,5 +73,4 @@ void	update_canvas(t_so_long *d, const t_mov_cmd *cmd)
 	else if (cmd->direction != UNKNOWN)
 		apply_half_move(d, cmd, &player);
 	mymlx_img_put(d, &(d->img_cat), player.x, player.y);
-	vect_remove(&(d->cmds), 0);
 }
