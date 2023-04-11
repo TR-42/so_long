@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 18:59:07 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:21:27 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static const char	g_err_inval_argc[]
 
 static const char	g_err_map_style[]
 	= "Invalid map style (maybe: map is not rect, or invalid char in the map)";
+
+static const char	g_err_map_size[]
+	= "Map TOO Big (height and width must same or less than IMT_MAX)";
 
 static const char	g_err_map_data[]
 	= "Invalid map data (maybe: start/end pos, collectives, or no closed wall)";

@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:19:43 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:13:57 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 01:21:45 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 // - sprintf
 #include <stdio.h>
 
+// - INT_MAX
+#include <limits.h>
+
 #include "mlx.h"
 
 #include "ft_put/ft_put.h"
@@ -35,6 +38,19 @@
 #include "read_input.h"
 #include "error_messages.h"
 #include "validate_input.h"
+
+static int	_valid_check(t_so_long *d)
+{
+	if (!is_valid_map_style(d))
+		return (print_error_msg(g_err_map_style));
+	else if (INT_MAX < d->row_count || INT_MAX < d->col_count)
+		return (print_error_msg(g_err_map_size));
+	else if (!is_valid_map_data(d))
+		return (print_error_msg(g_err_map_data));
+	else if (!is_map_solvable(d))
+		return (print_error_msg(g_err_map_not_solvable));
+	return (0);
+}
 
 static int	init_struct(const char *fname, t_so_long *d)
 {
@@ -51,12 +67,8 @@ static int	init_struct(const char *fname, t_so_long *d)
 	d->col_count = ft_strlen(d->map[0]);
 	if (d->map[0][d->col_count - 1] == '\n')
 		((char *)d->map[0])[--(d->col_count)] = '\0';
-	if (!is_valid_map_style(d))
-		return (print_error_msg(g_err_map_style));
-	else if (!is_valid_map_data(d))
-		return (print_error_msg(g_err_map_data));
-	else if (!is_map_solvable(d))
-		return (print_error_msg(g_err_map_not_solvable));
+	if (_valid_check(d) != 0)
+		return (1);
 	d->cmds = vect_init(512, sizeof(t_mov_cmd));
 	if (d->cmds.p != NULL)
 		return (0);
