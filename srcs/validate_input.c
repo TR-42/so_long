@@ -60,7 +60,11 @@ static bool	_is_valid_map_data(t_so_long *d, const t_uxy *cr,
 	size_t *map_exit, size_t *start_pos)
 {
 	d->collectives += (*c_at(d, cr) == CHR_COLLECTIVE);
-	map_exit += (*c_at(d, cr) == CHR_MAP_EXIT);
+	if (*c_at(d, cr) == CHR_MAP_EXIT)
+	{
+		*map_exit += 1;
+		d->exit = *cr;
+	}
 	if (*c_at(d, cr) == CHR_START_POS)
 	{
 		start_pos += 1;

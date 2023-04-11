@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 21:48:46 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:23:19 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_so_long
 	size_t		start_col;
 	size_t		counter;
 	int			collectives;
+	t_uxy		exit;
 	t_uxy		player;
 	t_vect		cmds;
 	t_img		img_cat;
