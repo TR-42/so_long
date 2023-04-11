@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:41:07 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 21:43:18 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 22:27:30 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static bool	_is_valid_map_data(t_so_long *d, const t_uxy *cr,
 	}
 	if (*c_at(d, cr) == CHR_START_POS)
 	{
-		start_pos += 1;
+		*start_pos += 1;
 		d->player = *cr;
 	}
 	if (1 < *map_exit || 1 < *start_pos || ((cr->y == 0 || cr->x == 0
