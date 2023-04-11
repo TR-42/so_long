@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 01:15:35 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/11 18:59:07 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define IMG_PATH_WHITE_CAT "./xpms/cat_tanmo_shiro.xpm"
 # define IMG_PATH_EMPTY_SPC "./xpms/texture_sogen_01.xpm"
 # define IMG_PATH_WALL "./xpms/texture_renga_brown_01.xpm"
-# define IMG_PATH_COLLECTIVE "./xpms/coin_gold_02.xpm"
-# define IMG_PATH_EXIT "./xpms/mark_mappin.xpm"
+# define IMG_PATH_COLLECTIVE "./xpms/coin_gold_02_sogen.xpm"
+# define IMG_PATH_EXIT "./xpms/mark_mappin_sogen.xpm"
 
 static const char	g_err[]
 	= "Error\n";
