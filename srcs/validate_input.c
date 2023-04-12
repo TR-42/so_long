@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:41:07 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 22:27:30 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 09:01:34 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,5 @@ bool	is_valid_map_data(t_so_long *d)
 		}
 		cr.y++;
 	}
-	return (0 < d->collectives);
+	return (0 < d->collectives && start_pos == 1 && end_pos == 1);
 }
