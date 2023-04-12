@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:24:10 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/11 00:22:31 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/12 09:04:55 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	on_key_pressed(int keycode, t_so_long *d)
 		cmd.direction = DOWN;
 	else if (keycode == XK_d || keycode == XK_Right)
 		cmd.direction = RIGHT;
-	if (cmd.direction != UNKNOWN)
+	else
+		return (0);
+	if (cmd.direction != 0 || cmd.direction != UNKNOWN)
 		vect_push_back(&(d->cmds), &cmd, NULL);
 	return (0);
 }
