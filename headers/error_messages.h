@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 00:02:55 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 08:08:11 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/14 07:26:39 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ static const char	g_err_inval_extension[]
 
 static const char	g_err_inval_argc[]
 	= "Invalid argc (usage: `so_long MAP_FILE_NAME`)";
+
+static const char	g_err_empty_map[]
+	= "Map file is Empty!";
 
 static const char	g_err_map_style[]
 	= "Invalid map style (maybe: map is not rect, or invalid char in the map)";
