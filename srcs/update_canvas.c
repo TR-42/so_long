@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:44:31 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/16 11:57:34 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void	apply_half_move(const t_so_long *d, const t_mov_cmd *cmd,
 {
 	put_imgs(d, &(d->player));
 	if (cmd->direction == UP)
-		player->y -= IMG_HEIGHT * 0.5;
+		player->y -= d->imgsize.y * 0.5;
 	else if (cmd->direction == DOWN)
-		player->y += IMG_HEIGHT * 0.5;
+		player->y += d->imgsize.y * 0.5;
 	else if (cmd->direction == LEFT)
-		player->x -= IMG_WIDTH * 0.5;
+		player->x -= d->imgsize.x * 0.5;
 	else if (cmd->direction == RIGHT)
-		player->x += IMG_WIDTH * 0.5;
+		player->x += d->imgsize.x * 0.5;
 }
 
 void	put_collective(const t_so_long *d, const t_uxy *cl,
@@ -70,8 +70,8 @@ void	update_canvas(t_so_long *d, const t_mov_cmd *cmd)
 	t_uxy		player;
 
 	player = d->player;
-	player.x *= IMG_WIDTH;
-	player.y *= IMG_HEIGHT;
+	player.x *= d->imgsize.x;
+	player.y *= d->imgsize.y;
 	if (cmd == NULL)
 		mlx_clear_window(d->mlx, d->mlx_win);
 	cl.y = 0;

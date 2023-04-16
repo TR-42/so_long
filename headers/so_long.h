@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 05:28:33 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 07:00:21 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/16 11:56:21 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@
 # define CHR_START_POS 'P'
 
 # define CHR_VISITED '\a'
-
-# define IMG_WIDTH 16
-# define IMG_HEIGHT (IMG_WIDTH)
 
 # define STEP 0xFFF
 
@@ -69,6 +66,7 @@ typedef struct s_so_long
 	t_img		img_collective1;
 	t_img		img_collective2;
 	t_img		img_exit;
+	t_xy		imgsize;
 }	t_so_long;
 
 typedef enum e_direction
