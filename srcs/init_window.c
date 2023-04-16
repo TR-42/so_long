@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 08:08:59 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/16 11:58:02 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/16 11:58:39 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ int	init_window(const char *argv0, t_so_long *d)
 		return (print_error_msg(g_err_mlx_init_failed));
 	if (!load_imgs(d))
 		return (1);
+	if (!can_mul(d->col_count, d->imgsize.x)
+		|| !can_mul(d->row_count, d->imgsize.y))
+		return (print_error_msg(g_err_map_size));
 	d->mlx_win = mlx_new_window(d->mlx, d->col_count * d->imgsize.x,
 			d->row_count * d->imgsize.y, (char *)argv0);
 	if (d->mlx_win == NULL)
