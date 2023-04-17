@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 06:38:19 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 07:01:44 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/18 00:04:54 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "ft_string/ft_string.h"
 
 #include "validate_input.h"
+#include "ft_vect2.h"
 
 static t_so_long	dup_so_long(const t_so_long *d)
 {
@@ -39,26 +40,53 @@ static t_so_long	dup_so_long(const t_so_long *d)
 	return (v);
 }
 
-static bool	go_to_goal(t_so_long *d, size_t row, size_t col, bool *is_goaled)
+static bool	update_map_and_stack(t_so_long *d, t_vect *to_chk, const t_xy *cr)
 {
 	char	c;
 
-	c = d->map[row][col];
-	if (c == CHR_MAP_EXIT)
-		*is_goaled = true;
-	else if (c == CHR_COLLECTIVE)
-		d->collectives--;
-	else if (c == CHR_WALL || c == CHR_VISITED)
-		return (false);
-	((char *)d->map[row])[col] = CHR_VISITED;
-	if (*is_goaled && d->collectives <= 0)
+	if (d->map[cr->y][cr->x] == CHR_WALL || d->map[cr->y][cr->x] == CHR_VISITED)
 		return (true);
-	return (
-		go_to_goal(d, row + 1, col, is_goaled)
-		|| go_to_goal(d, row, col + 1, is_goaled)
-		|| go_to_goal(d, row, col - 1, is_goaled)
-		|| go_to_goal(d, row - 1, col, is_goaled)
-	);
+	d->map[cr->y][cr->x] = CHR_VISITED;
+	c = d->map[cr->y][cr->x - 1];
+	if (c != CHR_WALL && c != CHR_VISITED
+		&& !vect_push_back(to_chk, &(t_xy){cr->x - 1, cr->y}, NULL))
+		return (false);
+	c = d->map[cr->y][cr->x + 1];
+	if (c != CHR_WALL && c != CHR_VISITED
+		&& !vect_push_back(to_chk, &(t_xy){cr->x + 1, cr->y}, NULL))
+		return (false);
+	c = d->map[cr->y - 1][cr->x];
+	if (c != CHR_WALL && c != CHR_VISITED
+		&& !vect_push_back(to_chk, &(t_xy){cr->x, cr->y - 1}, NULL))
+		return (false);
+	c = d->map[cr->y + 1][cr->x];
+	if (c != CHR_WALL && c != CHR_VISITED
+		&& !vect_push_back(to_chk, &(t_xy){cr->x, cr->y + 1}, NULL))
+		return (false);
+	return (true);
+}
+
+// TODO: mallocエラーに対応する
+// TODO: handle error after calling `update_map_and_stack`
+static bool	go_to_goal(t_so_long *d, size_t row, size_t col, bool *is_goaled)
+{
+	t_xy	cr;
+	t_vect	to_chk;
+
+	to_chk = vect_init(256, sizeof(t_xy));
+	vect_push_back(&to_chk, &(t_xy){col, row}, NULL);
+	while (to_chk.p != NULL && 0 < to_chk.len)
+	{
+		cr = *(t_xy *)vect_pop_back(&to_chk);
+		if (d->map[cr.y][cr.x] == CHR_MAP_EXIT)
+			*is_goaled = true;
+		else if (d->map[cr.y][cr.x] == CHR_COLLECTIVE)
+			d->collectives--;
+		if (!update_map_and_stack(d, &to_chk, &cr))
+			break ;
+	}
+	vect_dispose(&to_chk);
+	return (*is_goaled && d->collectives <= 0);
 }
 
 // checks...
