@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:09:52 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/16 11:57:34 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/19 21:47:54 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	update_canvas(t_so_long *d, const t_mov_cmd *cmd)
 	}
 	if (cmd != NULL && cmd->direction != 0 && cmd->direction != UNKNOWN)
 		apply_half_move(d, cmd, &player);
+	mlx_string_put(d->mlx, d->mlx_win, 2, 12, 0xFFFFFF, d->numstr_buf);
 	mymlx_img_put(d, &(d->img_cat), player.x, player.y);
 }

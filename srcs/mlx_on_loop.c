@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:44:31 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/19 21:30:31 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/19 21:31:37 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ static bool	_put_print_mov_count(t_so_long *d, const t_mov_cmd *cmd)
 			get_numstr_base(d->numstr_buf + 7, d->mov_count, 10, false);
 		}
 	}
-	mlx_string_put(d->mlx, d->mlx_win, 2, 12, 0xFFFFFF, d->numstr_buf);
 	return (true);
 }
 
