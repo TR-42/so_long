@@ -6,7 +6,7 @@
 /*   By: kfujita <kfujita@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:44:31 by kfujita           #+#    #+#             */
-/*   Updated: 2023/04/12 01:28:38 by kfujita          ###   ########.fr       */
+/*   Updated: 2023/04/19 21:30:31 by kfujita          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ static void	_on_move(t_so_long *d, t_mov_cmd *cmd, const t_uxy *cr, char *c_to)
 
 static bool	_put_print_mov_count(t_so_long *d, const t_mov_cmd *cmd)
 {
-	static char	numstr_buf[32] = {0};
-
-	if (numstr_buf[0] == 0)
-		ft_memcpy(numstr_buf, COUNT_INIT_STR, sizeof(COUNT_INIT_STR));
+	if (d->numstr_buf[0] == 0)
+		ft_memcpy(d->numstr_buf, COUNT_INIT_STR, sizeof(COUNT_INIT_STR));
 	else
 	{
 		if (cmd == NULL)
@@ -83,10 +81,10 @@ static bool	_put_print_mov_count(t_so_long *d, const t_mov_cmd *cmd)
 			ft_printf("Move! No.%06u from (%2d, %2d), direction: %c)\n",
 				(unsigned)d->mov_count, (unsigned)d->player.x,
 				(unsigned)d->player.y, cmd->direction);
-			get_numstr_base(numstr_buf + 7, d->mov_count, 10, false);
+			get_numstr_base(d->numstr_buf + 7, d->mov_count, 10, false);
 		}
 	}
-	mlx_string_put(d->mlx, d->mlx_win, 2, 12, 0xFFFFFF, numstr_buf);
+	mlx_string_put(d->mlx, d->mlx_win, 2, 12, 0xFFFFFF, d->numstr_buf);
 	return (true);
 }
 
